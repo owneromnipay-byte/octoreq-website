@@ -23,7 +23,7 @@ export default function Home() {
           <a href="#about">About</a>
 
           <a
-            href="http://localhost:3001/login"
+            href="https://portal.octoreq.com/login"
             className="rounded-xl border border-gray-700 px-5 py-2"
           >
             Login
@@ -59,14 +59,14 @@ export default function Home() {
 
 <div className="mt-10 flex gap-4">
           <a
-            href="http://localhost:3001/signup"
+            href="https://portal.octoreq.com/signup"
             className="rounded-xl bg-[#2AF371] px-8 py-4 text-black font-semibold"
           >
             Get Started
           </a>
 
           <a
-            href="http://localhost:3001/developers"
+            href="https://portal.octoreq.com/developers"
             className="rounded-xl border border-gray-700 px-8 py-4"
           >
             Developer Docs
