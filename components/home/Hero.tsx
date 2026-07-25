@@ -11,6 +11,7 @@ export default function Hero() {
   return (
     <section className="py-20 lg:py-32">
       <Container>
+        
         <div className="grid items-center gap-16 lg:grid-cols-2">
           {/* Left Side */}
           <div>
@@ -65,6 +66,7 @@ export default function Hero() {
           </div>
         </div>
       </Container>
+      
     </section>
   );
 }

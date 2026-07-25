@@ -1,5 +1,5 @@
 import Navbar from "@/components/layout/Navbar";
-import Hero from "@/components/home/Hero";
+import Hero from "@/components/home/hero";
 import WhyOctoreq from "@/components/home/WhyOctoreq";
 import Footer from "@/components/layout/Footer";
 
