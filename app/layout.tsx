@@ -1,5 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import { SITE } from "@/lib/site";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,31 +16,113 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
+
+  applicationName: SITE.name,
+
   title: {
-    default: "OCTOREQ Technologies Limited",
+    default: SITE.legalName,
     template: "%s | OCTOREQ",
   },
 
-  description:
-    "The Operating System for Commerce. Unified payment infrastructure for modern businesses.",
+  description: SITE.description,
 
   keywords: [
     "OCTOREQ",
     "Payment Infrastructure",
     "Payment Orchestration",
-    "Unified API",
+    "Payment Gateway",
+    "Unified Payments",
+    "Commerce Infrastructure",
+    "Merchant Payments",
     "Fintech",
-    "Commerce",
+    "Nigeria",
+    "Africa",
+    "API",
   ],
 
-  openGraph: {
-    title: "OCTOREQ Technologies Limited",
-    description:
-      "The Operating System for Commerce.",
-    url: "https://octoreq.com",
-    siteName: "OCTOREQ",
-    type: "website",
+  authors: [
+    {
+      name: SITE.legalName,
+      url: SITE.url,
+    },
+  ],
+
+  creator: SITE.legalName,
+
+  publisher: SITE.legalName,
+
+  category: "Technology",
+
+  alternates: {
+    canonical: "/",
   },
+
+  robots: {
+    index: true,
+    follow: true,
+
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+
+  openGraph: {
+    type: "website",
+
+    locale: SITE.locale,
+
+    url: SITE.url,
+
+    siteName: SITE.name,
+
+    title: SITE.legalName,
+
+    description: SITE.description,
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: SITE.name,
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+
+    title: SITE.legalName,
+
+    description: SITE.description,
+
+    images: ["/og-image.png"],
+  },
+
+  icons: {
+    icon: "/favicon.ico",
+
+    shortcut: "/favicon.ico",
+
+    apple: "/apple-touch-icon.png",
+  },
+
+  manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#000000",
+
+  colorScheme: "dark",
+
+  width: "device-width",
+
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -50,7 +135,9 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
