@@ -31,21 +31,31 @@ export default function PartnerApplyPage() {
             accept and manage payments.
           </p>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              href="https://partners.octoreq.com"
-              className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground"
-            >
-              Apply Now
-            </Link>
+          <div className="mt-10 flex flex-col items-center gap-4">
+  <a
+    href="https://partners.octoreq.com/signup"
+    className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground"
+  >
+    Create Partner Account
+  </a>
 
-            <Link
-              href="/contact"
-              className="rounded-lg border px-6 py-3 font-medium"
-            >
-              Contact Partnerships
-            </Link>
-          </div>
+  <p className="text-sm text-muted-foreground">
+    Already have an account?{" "}
+    <a
+      href="https://partners.octoreq.com/login"
+      className="font-medium text-primary hover:underline"
+    >
+      Sign in
+    </a>
+  </p>
+
+  <Link
+    href="/contact"
+    className="rounded-lg border px-6 py-3 font-medium"
+  >
+    Contact Partnerships
+  </Link>
+</div>
         </div>
       </section>
 
