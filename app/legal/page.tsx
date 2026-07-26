@@ -1,82 +1,56 @@
-import Link from "next/link";
+import LegalCenterHero from "@/components/legal/LegalCenterHero";
+import LegalStats from "@/components/legal/LegalStats";
+import LegalCategory from "@/components/legal/LegalCategory";
+import LegalContact from "@/components/legal/LegalContact";
 
-import Container from "@/components/layout/Container";
+import {
+  legalCategories,
+  legalPolicies,
+} from "@/data/legal/legalCenter";
 
-const documents = [
-  {
-    title: "Terms of Service",
-    description: "Rules governing your use of OCTOREQ.",
-    href: "/legal/terms",
-  },
-  {
-    title: "Privacy Policy",
-    description: "How we collect and protect your information.",
-    href: "/legal/privacy",
-  },
-  {
-    title: "Merchant Agreement",
-    description: "Terms applicable to OCTOREQ merchants.",
-    href: "/legal/merchant-agreement",
-  },
-  {
-    title: "Acceptable Use Policy",
-    description: "Guidelines for responsible platform usage.",
-    href: "/legal/acceptable-use",
-  },
-  {
-    title: "Cookie Policy",
-    description: "How cookies are used across our platform.",
-    href: "/legal/cookies",
-  },
-  {
-    title: "Compliance",
-    description: "AML, KYC, fraud prevention, and regulatory compliance.",
-    href: "/legal/compliance",
-  },
-];
+export const metadata = {
+  title: "Legal & Trust Center | OCTOREQ",
+  description:
+    "Access OCTOREQ's legal policies, security documentation, compliance commitments, developer agreements, and enterprise documentation.",
+};
 
 export default function LegalCenterPage() {
   return (
-    <section className="py-24">
-      <Container>
-        <div className="mx-auto mb-20 max-w-3xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-yellow-500">
-            Legal Center
-          </p>
+    <>
+      <LegalCenterHero />
 
-          <h1 className="mb-6 text-5xl font-bold text-white">
-            Legal Documentation
-          </h1>
+      <LegalStats totalPolicies={legalPolicies.length} />
 
-          <p className="text-lg leading-8 text-gray-400">
-            Everything you need to know about using OCTOREQ,
-            our payment infrastructure, security practices,
-            merchant obligations, and compliance standards.
-          </p>
-        </div>
+      {legalCategories.map((category) => (
+        <LegalCategory
+          key={category.id}
+          title={category.title}
+          description={getCategoryDescription(category.id)}
+          policies={legalPolicies.filter(
+            (policy) => policy.category === category.id
+          )}
+        />
+      ))}
 
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {documents.map((doc) => (
-            <Link
-              key={doc.href}
-              href={doc.href}
-              className="rounded-2xl border border-white/10 bg-white/5 p-8 transition hover:border-yellow-500 hover:bg-white/10"
-            >
-              <h2 className="mb-4 text-2xl font-semibold text-white">
-                {doc.title}
-              </h2>
-
-              <p className="mb-8 leading-7 text-gray-400">
-                {doc.description}
-              </p>
-
-              <span className="font-medium text-yellow-500">
-                Read Document →
-              </span>
-            </Link>
-          ))}
-        </div>
-      </Container>
-    </section>
+      <LegalContact />
+    </>
   );
+}
+
+function getCategoryDescription(
+  category: (typeof legalCategories)[number]["id"]
+) {
+  switch (category) {
+    case "legal":
+      return "Core legal agreements governing the use of OCTOREQ's platform, services, merchant accounts, and partner ecosystem.";
+
+    case "security":
+      return "Security, privacy, compliance, data protection, service availability, and enterprise trust documentation.";
+
+    case "developer":
+      return "Documentation governing access to OCTOREQ APIs, webhooks, integrations, and developer services.";
+
+    default:
+      return "";
+  }
 }

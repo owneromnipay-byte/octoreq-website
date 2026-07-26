@@ -2,46 +2,55 @@ import { LegalDocument } from "@/types/legal";
 
 import Container from "@/components/layout/Container";
 
+import LegalBreadcrumb from "./LegalBreadcrumbs";
+import LegalHeader from "./LegalHeader";
 import LegalSidebar from "./LegalSidebar";
 import LegalContent from "./LegalContent";
+import LegalNavigation from "./LegalNavigation";
 import TableOfContents from "./TableOfContents";
 
 interface LegalLayoutProps {
   document: LegalDocument;
+  currentSlug: string;
 }
 
 export default function LegalLayout({
   document,
+  currentSlug,
 }: LegalLayoutProps) {
   return (
-    <section className="py-20">
+    <section className="py-16 lg:py-20">
       <Container>
-        <div className="mb-16 max-w-3xl">
-          <p className="mb-3 text-sm font-medium uppercase tracking-wider text-yellow-500">
-            Legal
-          </p>
+        {/* Breadcrumb */}
+        <LegalBreadcrumb document={document} />
 
-          <h1 className="mb-6 text-5xl font-bold text-white">
-            {document.title}
-          </h1>
+        {/* Document Header */}
+        <LegalHeader document={document} />
 
-          <p className="text-lg leading-8 text-gray-400">
-            {document.description}
-          </p>
+        {/* Main Layout */}
+        <div className="grid grid-cols-1 gap-12 xl:grid-cols-[280px_minmax(0,1fr)_260px]">
+          {/* Left Sidebar */}
+          <aside className="hidden xl:block">
+            <LegalSidebar />
+          </aside>
 
-          <p className="mt-6 text-sm text-gray-500">
-            Last Updated: {document.lastUpdated}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[280px_minmax(0,1fr)_240px]">
-          <LegalSidebar />
-
-          <main className="max-w-3xl">
+          {/* Main Content */}
+          <main
+            className="min-w-0 max-w-3xl"
+            aria-labelledby="legal-document-title"
+          >
             <LegalContent document={document} />
+
+            {/* Previous / Next Navigation */}
+            <div className="mt-20 border-t border-border pt-10">
+              <LegalNavigation currentSlug={currentSlug} />
+            </div>
           </main>
 
-          <TableOfContents document={document} />
+          {/* Table of Contents */}
+          <aside className="hidden xl:block">
+            <TableOfContents document={document} />
+          </aside>
         </div>
       </Container>
     </section>

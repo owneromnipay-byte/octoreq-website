@@ -33,14 +33,14 @@ export default function PartnerApplyPage() {
 
           <div className="mt-10 flex flex-col items-center gap-4">
   <a
-    href="https://partners.octoreq.com/signup"
+    href="https://partners.octoreq.com/apply"
     className="rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground"
   >
-    Create Partner Account
+    Apply to Become a Partner
   </a>
 
   <p className="text-sm text-muted-foreground">
-    Already have an account?{" "}
+    Already an Approved Partner?{" "}
     <a
       href="https://partners.octoreq.com/login"
       className="font-medium text-primary hover:underline"
@@ -161,7 +161,7 @@ export default function PartnerApplyPage() {
         </p>
 
         <Link
-          href="https://partners.octoreq.com"
+          href="https://partners.octoreq.com/apply"
           className="mt-10 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 font-semibold text-primary-foreground"
         >
           Apply Now
