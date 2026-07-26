@@ -11,7 +11,7 @@ import TableOfContents from "./TableOfContents";
 
 interface LegalLayoutProps {
   document: LegalDocument;
-  currentSlug: string;
+  currentSlug?: string;
 }
 
 export default function LegalLayout({
@@ -42,9 +42,12 @@ export default function LegalLayout({
             <LegalContent document={document} />
 
             {/* Previous / Next Navigation */}
-            <div className="mt-20 border-t border-border pt-10">
-              <LegalNavigation currentSlug={currentSlug} />
-            </div>
+            {currentSlug && (
+  <div className="mt-20 border-t border-border pt-10">
+    <LegalNavigation currentSlug={currentSlug} />
+  </div>
+)}
+            
           </main>
 
           {/* Table of Contents */}
