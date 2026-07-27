@@ -1,5 +1,13 @@
-export default function Divider() {
+interface DividerProps {
+  className?: string;
+}
+
+export default function Divider({
+  className = "",
+}: DividerProps) {
   return (
-    <div className="mx-auto my-20 h-px w-full max-w-7xl bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <hr
+      className={`mx-auto h-px w-full max-w-7xl border-0 bg-gradient-to-r from-transparent via-white/10 to-transparent ${className}`}
+    />
   );
 }

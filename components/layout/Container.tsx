@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
+import { PropsWithChildren } from "react";
 
-interface ContainerProps {
-  children: ReactNode;
+interface ContainerProps extends PropsWithChildren {
   className?: string;
 }
 
@@ -11,7 +10,7 @@ export default function Container({
 }: ContainerProps) {
   return (
     <div
-      className={`max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 ${className}`}
+      className={`mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 xl:px-10 ${className}`}
     >
       {children}
     </div>

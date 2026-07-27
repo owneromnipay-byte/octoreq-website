@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { PropsWithChildren } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import { SITE } from "@/lib/site";
@@ -27,19 +28,7 @@ export const metadata: Metadata = {
 
   description: SITE.description,
 
-  keywords: [
-    "OCTOREQ",
-    "Payment Infrastructure",
-    "Payment Orchestration",
-    "Payment Gateway",
-    "Unified Payments",
-    "Commerce Infrastructure",
-    "Merchant Payments",
-    "Fintech",
-    "Nigeria",
-    "Africa",
-    "API",
-  ],
+  keywords: SITE.keywords,
 
   authors: [
     {
@@ -54,6 +43,21 @@ export const metadata: Metadata = {
 
   category: "Technology",
 
+  generator: "Next.js",
+
+  referrer: "origin-when-cross-origin",
+
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+  },
+
   alternates: {
     canonical: "/",
   },
@@ -65,8 +69,8 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
       "max-image-preview": "large",
+      "max-video-preview": -1,
       "max-snippet": -1,
     },
   },
@@ -86,7 +90,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/og-image.png",
+        url: SITE.images.og,
         width: 1200,
         height: 630,
         alt: SITE.name,
@@ -97,26 +101,36 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
 
+    creator: "@octoreqhq",
+
     title: SITE.legalName,
 
     description: SITE.description,
 
-    images: ["/og-image.png"],
+    images: [SITE.images.og],
+  },
+
+  appleWebApp: {
+    capable: true,
+
+    title: SITE.name,
+
+    statusBarStyle: "black-translucent",
   },
 
   icons: {
-    icon: "/favicon.ico",
+    icon: SITE.images.favicon,
 
-    shortcut: "/favicon.ico",
+    shortcut: SITE.images.favicon,
 
-    apple: "/apple-touch-icon.png",
+    apple: SITE.images.appleTouch,
   },
 
   manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: SITE.themeColor,
 
   colorScheme: "dark",
 
@@ -127,15 +141,14 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: PropsWithChildren) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="flex min-h-full flex-col bg-black text-white">
         {children}
       </body>
     </html>

@@ -13,26 +13,25 @@ export default function SectionHeading({
   description,
   align = "center",
 }: SectionHeadingProps) {
+  const alignment =
+    align === "center"
+      ? "mx-auto max-w-3xl text-center"
+      : "max-w-4xl text-left";
+
   return (
-    <div
-      className={`max-w-3xl ${
-        align === "center"
-          ? "mx-auto text-center"
-          : "text-left"
-      }`}
-    >
+    <div className={alignment}>
       {badge && (
         <div className="mb-4">
           <Badge>{badge}</Badge>
         </div>
       )}
 
-      <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
+      <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
         {title}
       </h2>
 
       {description && (
-        <p className="mt-6 text-lg leading-8 text-gray-400">
+        <p className="mt-6 text-lg leading-8 text-gray-300">
           {description}
         </p>
       )}

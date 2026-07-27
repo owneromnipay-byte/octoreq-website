@@ -1,73 +1,101 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Container from "./Container";
+import NavLinks from "./NavLinks";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="py-6">
-      <Container>
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/">
-            <Image
-              src="/octoreq-logo.jpg"
-              alt="OCTOREQ"
-              width={180}
-              height={60}
-              priority
-              className="w-auto h-10 lg:h-12"
-            />
-          </Link>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 text-sm text-gray-300">
-            <Link href="/#products" className="transition hover:text-white">
-              Products
-            </Link>
-
-            <Link href="/developers" className="transition hover:text-white">
-              Developers
-            </Link>
-
-            <Link href="/pricing" className="transition hover:text-white">
-              Pricing
-            </Link>
-           <Link href="/partners" className="transition hover:text-white">
-              Partners
-          </Link>
-
-            <Link href="/legal" className="transition hover:text-white">
-              Legal
-            </Link>
-
-            <Link href="/#about" className="transition hover:text-white">
-              About
-            </Link>
-
+    <>
+      <header
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-white/10 bg-black/70 backdrop-blur-xl shadow-lg"
+            : "bg-transparent"
+        }`}
+      >
+        <Container>
+          <div className="flex h-20 items-center justify-between">
+            {/* Logo */}
             <Link
-              href="https://portal.octoreq.com/login"
-              className="rounded-xl border border-gray-700 px-5 py-2 transition hover:border-gray-500"
+              href="/"
+              aria-label="OCTOREQ Home"
+              className="flex items-center"
             >
-              Login
+              <Image
+                src="/octoreq-logo.jpg"
+                alt="OCTOREQ"
+                width={180}
+                height={60}
+                priority
+                className="h-10 w-auto lg:h-12"
+              />
             </Link>
 
-            <Link
-              href="https://portal.octoreq.com/signup"
-              className="rounded-xl bg-[#2AF371] px-5 py-2 font-semibold text-black transition hover:opacity-90"
+            {/* Desktop Navigation */}
+            <nav
+              aria-label="Primary"
+              className="hidden items-center gap-8 text-sm text-gray-300 md:flex"
             >
-              Get Started
-            </Link>
+              <NavLinks />
+            </nav>
+
+            {/* Desktop Actions */}
+            <div className="hidden items-center gap-4 md:flex">
+              <Link
+                href="https://portal.octoreq.com/login"
+                className="rounded-xl border border-gray-700 px-5 py-2 text-sm font-medium text-white transition hover:border-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2AF371]"
+              >
+                Login
+              </Link>
+
+              <Link
+                href="https://portal.octoreq.com/signup"
+                className="rounded-xl bg-[#2AF371] px-5 py-2 text-sm font-semibold text-black transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2AF371]"
+              >
+                Get Started
+              </Link>
+            </div>
+
+            {/* Mobile Toggle */}
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen(true)}
+              aria-label="Open navigation menu"
+              aria-controls="mobile-navigation"
+              aria-expanded={isMenuOpen}
+              className="rounded-md p-2 text-3xl text-white transition hover:bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2AF371] md:hidden"
+            >
+              ☰
+            </button>
           </div>
+        </Container>
+      </header>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-3xl"
-            aria-label="Open navigation menu"
-          >
-            ☰
-          </button>
-        </div>
-      </Container>
-    </nav>
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={() => setIsMenuOpen(false)}
+      />
+    </>
   );
 }

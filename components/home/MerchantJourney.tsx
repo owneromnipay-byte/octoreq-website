@@ -3,55 +3,59 @@ import SectionHeading from "../shared/SectionHeading";
 
 const steps = [
   {
-    title: "Customer Pays",
+    step: "01",
+    title: "Customer Initiates Payment",
     description:
-      "Customers pay using cards, bank transfers, wallets, QR codes, or other supported payment methods.",
+      "Customers complete checkout using supported payment methods through your existing commerce experience.",
   },
   {
-    title: "OCTOREQ Routes",
+    step: "02",
+    title: "OCTOREQ Orchestrates",
     description:
-      "Our orchestration engine automatically routes each payment to the best-performing provider.",
+      "The platform intelligently routes requests based on provider availability, routing rules, and operational health.",
   },
   {
-    title: "Payment Confirmed",
+    step: "03",
+    title: "Real-Time Processing",
     description:
-      "Real-time webhooks, ledger updates, notifications, and reconciliation happen instantly.",
+      "Webhooks, notifications, ledger updates, and transaction events are synchronized across your integration.",
   },
   {
-    title: "Settlement",
+    step: "04",
+    title: "Reconciliation & Settlement",
     description:
-      "Funds are automatically reconciled and prepared for merchant settlement according to schedule.",
+      "Transaction records are reconciled while settlement processes are orchestrated through your connected payment providers.",
   },
 ];
 
 export default function MerchantJourney() {
   return (
-    <section className="py-24">
+    <section className="py-24 lg:py-32">
       <Container>
         <SectionHeading
           badge="Merchant Journey"
-          title="Every payment follows an intelligent workflow."
-          description="From checkout to settlement, OCTOREQ automates every step of the payment lifecycle."
+          title="Commerce infrastructure working behind every transaction."
+          description="From checkout to reconciliation, OCTOREQ simplifies the operational complexity behind modern commerce through one unified platform."
         />
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, index) => (
-            <div
-              key={step.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-8 transition hover:border-yellow-500/30 hover:bg-white/10"
+        <div className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {steps.map((step) => (
+            <article
+              key={step.step}
+              className="rounded-2xl border border-white/10 bg-neutral-950 p-8 transition-all duration-300 hover:border-[#2AF371]/30 hover:bg-neutral-900"
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500 text-lg font-bold text-black">
-                {index + 1}
+              <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full border border-[#2AF371]/20 bg-[#2AF371]/10 text-sm font-semibold text-[#2AF371]">
+                {step.step}
               </div>
 
-              <h3 className="text-xl font-semibold text-white">
+              <h3 className="text-lg font-semibold tracking-tight text-white">
                 {step.title}
               </h3>
 
-              <p className="mt-4 text-gray-400">
+              <p className="mt-4 leading-7 text-gray-300">
                 {step.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </Container>

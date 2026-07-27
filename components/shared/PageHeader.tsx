@@ -13,7 +13,7 @@ export default function PageHeader({
   description,
 }: PageHeaderProps) {
   return (
-    <section className="border-b border-white/10 py-24">
+    <section className="border-b border-white/10 py-24 lg:py-32">
       <Container>
         <div className="max-w-4xl">
           {badge && (
@@ -22,11 +22,11 @@ export default function PageHeader({
             </div>
           )}
 
-          <h1 className="text-5xl font-bold text-white md:text-6xl">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl">
             {title}
           </h1>
 
-          <p className="mt-8 text-xl leading-9 text-gray-400">
+          <p className="mt-8 text-xl leading-9 text-gray-300">
             {description}
           </p>
         </div>

@@ -12,23 +12,24 @@ import CTA from "@/components/shared/CTA";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-black via-slate-950 to-black text-white">
+    <main className="min-h-screen bg-black text-white">
+      {/* Navigation */}
       <Navbar />
 
+      {/* Hero */}
       <Hero />
 
+      {/* Homepage Sections */}
       <WhyOctoreq />
-
       <MerchantJourney />
-
       <Products />
-
       <DeveloperExperience />
-
       <Security />
 
+      {/* Call To Action */}
       <CTA />
 
+      {/* Footer */}
       <Footer />
     </main>
   );

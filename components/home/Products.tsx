@@ -5,59 +5,59 @@ const products = [
   {
     title: "Payment Orchestration",
     description:
-      "Automatically route every transaction through the best-performing payment provider for higher success rates.",
+      "Route transactions across connected payment providers through a single integration designed for reliability, flexibility, and operational control.",
   },
   {
-    title: "Virtual Accounts",
+    title: "Virtual Account Infrastructure",
     description:
-      "Generate dedicated bank accounts instantly for collections, deposits, and merchant reconciliation.",
+      "Provision virtual account capabilities through integrated providers while managing collections through one unified platform.",
   },
   {
-    title: "Merchant Wallets",
+    title: "Merchant Wallet Infrastructure",
     description:
-      "Maintain real-time balances, automate settlements, and track every movement with a complete ledger.",
+      "Manage merchant balances, transaction records, and wallet operations with a unified ledger architecture.",
   },
   {
-    title: "Checkout",
+    title: "Unified Checkout",
     description:
-      "Accept cards, bank transfers, QR payments, USSD, and additional payment methods through a unified checkout.",
+      "Accept multiple payment methods through one consistent checkout experience without maintaining separate integrations.",
   },
   {
-    title: "Payouts",
+    title: "Payout Orchestration",
     description:
-      "Transfer funds to bank accounts quickly with automated payout scheduling and tracking.",
+      "Coordinate payout workflows across connected providers with configurable routing, scheduling, and operational visibility.",
   },
   {
-    title: "Analytics",
+    title: "Commerce Analytics",
     description:
-      "Monitor transaction volume, settlement reports, provider performance, and business growth from one dashboard.",
+      "Monitor transactions, provider performance, reconciliation activity, and operational insights from a unified dashboard.",
   },
 ];
 
 export default function Products() {
   return (
-    <section className="py-24">
+    <section className="py-24 lg:py-32">
       <Container>
         <SectionHeading
-          badge="Products"
-          title="Everything you need to run modern payments."
-          description="A complete suite of payment infrastructure designed to help businesses collect, manage, and move money with confidence."
+          badge="Platform"
+          title="A unified platform for modern commerce."
+          description="OCTOREQ brings together the infrastructure businesses need to accept payments, manage commerce operations, and build scalable financial experiences through a single integration."
         />
 
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product) => (
-            <div
+            <article
               key={product.title}
-              className="rounded-2xl border border-white/10 bg-white/5 p-8 transition-all duration-300 hover:border-yellow-500/30 hover:bg-white/10 hover:-translate-y-1"
+              className="rounded-2xl border border-white/10 bg-neutral-950 p-8 transition-all duration-300 hover:border-[#2AF371]/30 hover:bg-neutral-900"
             >
-              <h3 className="text-2xl font-semibold text-white">
+              <h3 className="text-lg font-semibold tracking-tight text-white">
                 {product.title}
               </h3>
 
-              <p className="mt-4 leading-7 text-gray-400">
+              <p className="mt-4 leading-7 text-gray-300">
                 {product.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </Container>

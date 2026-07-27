@@ -1,10 +1,26 @@
+import { ReactNode } from "react";
+
 interface BadgeProps {
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export default function Badge({ children }: BadgeProps) {
   return (
-    <span className="inline-flex items-center rounded-full border border-yellow-500/20 bg-yellow-500/10 px-4 py-1 text-sm font-medium text-yellow-400">
+    <span
+      className="
+        inline-flex
+        items-center
+        rounded-full
+        border
+        border-[#2AF371]/20
+        bg-[#2AF371]/10
+        px-4
+        py-1
+        text-sm
+        font-medium
+        text-[#2AF371]
+      "
+    >
       {children}
     </span>
   );
