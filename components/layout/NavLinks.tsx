@@ -12,7 +12,7 @@ export const navigation: NavigationItem[] = [
   },
   {
     name: "Developers",
-    href: "/developers",
+    href: "https://docs.octoreq.com",
   },
   {
     name: "Pricing",

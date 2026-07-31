@@ -35,12 +35,12 @@ export default function DeveloperExperience() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Button href="/developers">
+              <Button href="https://docs.octoreq.com">
                 Explore APIs
               </Button>
 
               <Button
-                href="/developers"
+                href="https:docs.octoreq.com"
                 variant="outline"
               >
                 Documentation

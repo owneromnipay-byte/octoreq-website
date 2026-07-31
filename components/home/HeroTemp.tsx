@@ -13,7 +13,7 @@ const hero = {
 
   secondaryCTA: {
     label: "Developer Docs",
-    href: "/developers",
+    href: "https://docs.octoreq.com",
   },
 
   highlights: [
