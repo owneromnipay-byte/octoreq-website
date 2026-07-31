@@ -43,12 +43,27 @@ export default function Button({
   const classes = `${base} ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (href) {
+  const isExternal = href.startsWith("http://") || href.startsWith("https://");
+
+  if (isExternal) {
     return (
-      <Link href={href} className={classes} aria-disabled={disabled}>
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={classes}
+      >
         {children}
-      </Link>
+      </a>
     );
   }
+
+  return (
+    <Link href={href} className={classes} aria-disabled={disabled}>
+      {children}
+    </Link>
+  );
+}
 
   return (
     <button
