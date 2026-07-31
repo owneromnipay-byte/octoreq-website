@@ -71,7 +71,7 @@ export default function Footer() {
               </Button>
 
               <Button
-                href="/developers"
+                href="https://docs.octoreq.com"
                 variant="outline"
               >
                 Developer Docs
