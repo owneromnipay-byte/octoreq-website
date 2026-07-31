@@ -22,7 +22,7 @@ export default function CTA() {
             </Button>
 
             <Button
-              href="/developers"
+              href="https://docs.octoreq.com"
               variant="outline"
               size="lg"
             >
