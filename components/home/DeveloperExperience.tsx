@@ -40,7 +40,7 @@ export default function DeveloperExperience() {
               </Button>
 
               <Button
-                href="https:docs.octoreq.com"
+                href="https://docs.octoreq.com"
                 variant="outline"
               >
                 Documentation
